@@ -1,21 +1,21 @@
 
 
-class ItemModel {
+class SearchResponse {
   int _page;
   int _totalResults;
   int _totalPages;
-  List<_Result> _results = [];
+  List<UnsplashPhoto> _results = [];
 
 
-  ItemModel.fromJson(Map<String, dynamic> parsedJson) {
+  SearchResponse.fromJson(Map<String, dynamic> parsedJson) {
     print(parsedJson['results'].length);
     _page = parsedJson['page'];
     _totalResults = parsedJson['total_results'];
     _totalPages = parsedJson['total_pages'];
 
-    List<_Result> results = [];
+    List<UnsplashPhoto> results = [];
     for(int i = 0; i < parsedJson['results'].length; i++) {
-      _Result result = _Result(parsedJson['results'][i]);
+      UnsplashPhoto result = UnsplashPhoto(parsedJson['results'][i]);
       results.add(result);
     }
     _results = results;
@@ -24,11 +24,11 @@ class ItemModel {
   int get page => _page;
   int get totalResults => _totalResults;
   int get totalPages => _totalPages;
-  List<_Result> get results => _results;
+  List<UnsplashPhoto> get results => _results;
 }
 
-class _Result {
-  int _id;
+class UnsplashPhoto {
+  String _id;
   String _createdAt;
   String _updatedAt;
   int _width;
@@ -36,11 +36,11 @@ class _Result {
   String _color;
   String _description;
   String _altDescription;
-  _Url _urls;
-  _Links _links;
+  Urls _urls;
+  Links _links;
   int _likes;
 
-  _Result(result) {
+  UnsplashPhoto(result) {
     _id = result['id'];
     _createdAt = result['created_at'];
     _updatedAt = result['updated_at'];
@@ -49,12 +49,12 @@ class _Result {
     _color = result['color'];
     _description = result['description'];
     _altDescription = result['alt_description'];
-    _urls = _Url(result['urls']);
-    _links = _Links(result['links']);
+    _urls = Urls(result['urls']);
+    _links = Links(result['links']);
     _likes = result['likes'];
   }
 
-  int get id => _id;
+  String get id => _id;
   String get createdAt => _createdAt;
   String get updatedAt => _updatedAt;
   int get width => _width;
@@ -62,20 +62,20 @@ class _Result {
   String get color => _color;
   String get description => _description;
   String get altDescription => _altDescription;
-  _Url get urls => _urls;
-  _Links get links => _links;
+  Urls get urls => _urls;
+  Links get links => _links;
   int get likes => _likes;
 
 }
 
-class _Url {
+class Urls {
   String _raw;
   String _full;
   String _regular;
   String _small;
   String _thumb;
 
-  _Url(urls) {
+  Urls(urls) {
     _raw = urls['raw'];
     _full = urls['full'];
     _regular = urls['regular'];
@@ -90,21 +90,21 @@ class _Url {
   String get thumb => _thumb;
 }
 
-class _Links {
+class Links {
   String _self;
   String _html;
   String _download;
-  String _download_location;
+  String _downloadLocation;
 
-  _Links(links) {
+  Links(links) {
     _self = links['self'];
     _html = links['html'];
     _download = links['download'];
-    _download_location = links['download_location'];
+    _downloadLocation = links['download_location'];
   }
 
   String get self => _self;
   String get html => _html;
   String get download => _download;
-  String get downloadLocation => _download_location;
+  String get downloadLocation => _downloadLocation;
 }

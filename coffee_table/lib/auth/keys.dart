@@ -12,9 +12,7 @@ class Secret {
   }
 }
 
-/**
- * This is not the best way to get api key.
- */
+/// This is not the best way to get api key.
 class SecretLoader {
   final String secretPath;
 
