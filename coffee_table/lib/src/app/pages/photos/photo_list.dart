@@ -1,4 +1,4 @@
-import 'package:coffee_table/src/app/pages/photos/PhotosBloc.dart';
+import 'package:coffee_table/src/app/pages/photos/photos_bloc.dart';
 import 'package:coffee_table/src/data/services/unsplash_api/responses/search_response.dart';
 import 'package:flutter/material.dart';
 
